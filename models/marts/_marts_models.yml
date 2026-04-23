@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Table de dimension des clients enrichie avec les statistiques de commandes."
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              arguments: # Ajout de ce bloc obligatoire
+                to: ref('dim_customers')
+                field: customer_id
+
+      - name: lifetime_value
+        description: "Montant total dépensé par le client depuis sa première commande."
+
+  - name: fct_orders
+    description: "Table de faits contenant toutes les transactions de commandes."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        description: "Montant net de la commande en dollars."
