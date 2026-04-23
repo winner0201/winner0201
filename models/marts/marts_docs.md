@@ -12,5 +12,4 @@ Cette table est le cœur de notre modèle de données pour l'analyse des ventes.
 1. Calcul du Chiffre d'Affaires (CA) total.
 2. Analyse de la saisonnalité des ventes.
 3. Suivi des délais de livraison.
-
 {% enddocs %}
