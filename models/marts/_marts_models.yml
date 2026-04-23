@@ -16,7 +16,7 @@ models:
         description: "Montant total dépensé par le client depuis sa première commande."
 
   - name: fct_orders
-    description: "Table de faits contenant toutes les transactions de commandes."
+    description: '{{ doc("fct_orders_description") }}' # On appelle le bloc Markdown ici
     columns:
       - name: order_id
         tests:
