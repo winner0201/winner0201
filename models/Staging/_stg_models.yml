@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: snowflake_raw
+    database: ANALYTICS
+    schema: PUBLIC
+    tables:
+      - name: customers
+      - name: orders
+      - name: payments
+
+models:
+  - name: stg_customers
+    description: "Nettoyage de la table brute des clients."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    description: "Nettoyage de la table brute des commandes."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+
+  - name: stg_payments
+    description: "Nettoyage de la table brute des paiements."
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
