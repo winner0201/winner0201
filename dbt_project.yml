@@ -2,21 +2,21 @@ name: 'jaffle_shop'
 version: '1.0.0'
 config-version: 2
 
-# Définit le profil de connexion (doit correspondre à votre connexion dbt Cloud)
+# Définit le profil de connexion (doit correspondre à votre setup dbt Cloud)
 profile: 'default'
 
-# Dossiers où dbt cherche les fichiers
-model-paths: ["models"]
-seed-paths: ["seeds"]
-test-paths: ["tests"]
-analysis-paths: ["analyses"]
-macro-paths: ["macros"]
+# Définition des chemins vers les différents types de fichiers
+model-paths: ["models"]      # Dossier des scripts SQL
+seed-paths: ["seeds"]        # Dossier des fichiers CSV de données fixes
+test-paths: ["tests"]        # Dossier des tests personnalisés (data tests)
+macro-paths: ["macros"]      # Dossier des fonctions Jinja réutilisables
 
-target-path: "target"
+# Nettoyage des dossiers temporaires
 clean-targets:
   - "target"
   - "dbt_packages"
 
+# --- HIÉRARCHIE DES MODÈLES ---
 # Configuration des matérialisations
 models:
   jaffle_shop: # Le nom de votre projet

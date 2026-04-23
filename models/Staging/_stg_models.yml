@@ -4,6 +4,7 @@ sources:
   - name: snowflake_raw
     database: ANALYTICS
     schema: PUBLIC
+    description: "Données brutes dans Snowflake"
     tables:
       - name: customers
       - name: orders
@@ -11,7 +12,7 @@ sources:
 
 models:
   - name: stg_customers
-    description: "Nettoyage de la table brute des clients."
+    description: "Nettoyage des clients"
     columns:
       - name: customer_id
         tests:
@@ -19,7 +20,7 @@ models:
           - not_null
 
   - name: stg_orders
-    description: "Nettoyage de la table brute des commandes."
+    description: "Nettoyage des commandes"
     columns:
       - name: order_id
         tests:
@@ -28,12 +29,19 @@ models:
       - name: status
         tests:
           - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              arguments:
+                values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
   - name: stg_payments
-    description: "Nettoyage de la table brute des paiements."
+    description: "Nettoyage des paiements et lien avec les commandes"
     columns:
       - name: payment_id
         tests:
           - unique
           - not_null
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
