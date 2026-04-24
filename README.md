@@ -12,6 +12,7 @@ Voici le graphe de dépendances (Lineage) de nos modèles :
 * **Marts** : Création de la table de faits `fct_orders` et de la dimension `dim_customers`.
 
 **ce que l'on a fait**:
+
 **1. Architecture Modern Data Stack**
 séparé le stockage de la donnée brute de la donnée prête à l'analyse en utilisant Snowflake comme moteur de calcul et dbt comme chef d'orchestre des transformations.
 
