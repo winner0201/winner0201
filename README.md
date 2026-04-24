@@ -18,6 +18,7 @@ Voici le graphe de dépendances (Lineage) de nos modèles :
 séparé le stockage de la donnée brute de la donnée prête à l'analyse en utilisant Snowflake comme moteur de calcul et dbt comme chef d'orchestre des transformations.
 
 **2. Le Framework d'Ingénierie (ELT)**
+
 pas contenté de faire du SQL, mais structuré le projet :
 
 **Sources** : Déclaration et isolation des données brutes.
@@ -27,6 +28,7 @@ pas contenté de faire du SQL, mais structuré le projet :
 **Marts** : Modélisation en schéma en étoile avec des tables de faits (fct_) pour les mesures et des dimensions (dim_) pour le contexte.
 
 **3. La Qualité et l'Intégrité**
+
  automatisé la confiance dans les données grâce aux tests :
 
 **Tests génériques** : unique et not_null.
@@ -36,6 +38,7 @@ pas contenté de faire du SQL, mais structuré le projet :
 **Validation métier** : accepted_values pour contrôler les statuts.
 
 **4. Les "Best Practices" Software**
+
 traité la data comme du code :
 
 **Versionnage** : Utilisation de Git & GitHub pour gérer les changements.
